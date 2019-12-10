@@ -18,3 +18,8 @@ io.on("connection", socket => {
     io.emit("messageToClients", { text: msg.text });
   });
 });
+
+io.of("/admin").on("connection", () => {
+  console.log("connected to admin");
+  io.of("/admin").emit("welcome", "Welcome to admin");
+});
